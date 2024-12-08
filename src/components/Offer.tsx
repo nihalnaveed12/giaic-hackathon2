@@ -35,7 +35,7 @@ export default function Offer() {
       </h1>
       <div className="grid lg:grid-cols-4 gap-4 py-10 md:grid-cols-2">
         {Offers.map((offer) => (
-          <div className="flex flex-col items-center shadow-lg px-4 py-10 gap-4">
+          <div className="flex flex-col items-center shadow-lg px-4 py-10 gap-4" key={offer.name}>
             <Image
               src={offer.src}
               height={1000}

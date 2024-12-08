@@ -1,4 +1,4 @@
-"use client";
+
 import Link from "next/link";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
@@ -11,13 +11,11 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { useState } from "react";
+
 
 export default function Navbar() {
-  const [menuOpen, setMenuOpen] = useState<boolean>(false);
-  const handleClick = () => {
-    setMenuOpen(!menuOpen);
-  };
+
+ 
   const navItem = [
     {
       name: "Home",

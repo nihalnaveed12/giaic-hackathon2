@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Dot } from "lucide-react";
+
 import { Button } from "./ui/button";
 export default function Discount() {
   return (

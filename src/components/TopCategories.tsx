@@ -10,7 +10,7 @@ export default function TopCat() {
 
       <div className="grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-6 pt-10">
         {products.slice(0, 4).map((product) => (
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-3" key={product.id}>
             <div className="bg-[#F5F6F8] p-10 cursor-pointer w-full h-full overflow-hidden rounded-full flex items-center hover:border-l-[#9877E7]  hover:border-l-8 transition-[transform,colors] duration-700">
               <Image
                 src={product.images[0]}
