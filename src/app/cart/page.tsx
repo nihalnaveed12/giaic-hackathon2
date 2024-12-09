@@ -29,7 +29,7 @@ export default function Cart() {
             </ul>
             <div className="pt-12 flex flex-col divide-y ">
               {products.slice(0, 5).map((product) => (
-                <div className="py-10 ">
+                <div className="py-10 " key={product.id}>
                   <ul className="flex gap-36 items-center">
                     <li className="flex gap-3">
                       <Image
