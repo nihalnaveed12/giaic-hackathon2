@@ -79,7 +79,7 @@ export const products: Product[] = [
       "Feature-rich smartphone with an excellent camera and battery life.",
     rating: 4.8,
     images: [
-      "/productsImg/image7.png",
+      "/productsImg/image1.png",
       "/productsImg/chair.png",
       "/productsImg/image4.png",
       "/productsImg/image3.png",
@@ -92,7 +92,8 @@ export const products: Product[] = [
     category: "Appliances",
     shortSummary: "Powerful blender for smoothies, sauces, and more.",
     rating: 4.4,
-    images: ["/productsImg/chair.png",
+    images: [
+      "/productsImg/image9.png",
       "/productsImg/image14.png",
       "/productsImg/image4.png",
       "/productsImg/image3.png",],
@@ -104,8 +105,9 @@ export const products: Product[] = [
     category: "Fitness",
     shortSummary: "Non-slip yoga mat for a comfortable workout experience.",
     rating: 4.5,
-    images: ["/productsImg/image5.png",
-      "/productsImg/image14.png",
+    images: [
+      "/productsImg/image5.png",
+      "/productsImg/image8.png",
       "/productsImg/image4.png",
       "/productsImg/image3.png",],
   },
@@ -116,7 +118,8 @@ export const products: Product[] = [
     category: "Accessories",
     shortSummary: "Compact wireless mouse with ergonomic design.",
     rating: 4.2,
-    images: ["/productsImg/chair.png",
+    images: [
+      "/productsImg/image6.png",
       "/productsImg/image14.png",
       "/productsImg/image4.png",
       "/productsImg/image3.png",],
@@ -128,7 +131,8 @@ export const products: Product[] = [
     category: "Home Decor",
     shortSummary: "Soft and breathable cotton bedsheet set with pillow covers.",
     rating: 4.3,
-    images: ["/productsImg/chair.png",
+    images: [
+      "/productsImg/image7.png",
       "/productsImg/image14.png",
       "/productsImg/image4.png",
       "/productsImg/image3.png",],

@@ -3,6 +3,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 import { Poppins, Josefin_Sans, Lato } from "next/font/google";
+import HeadingBar from "@/components/HeaadingBar";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/footer";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -20,8 +23,8 @@ const josefin = Josefin_Sans({
 const lato = Lato({
   style: "normal",
   weight: ["100", "300", "400", "700", "900"],
-  subsets:['latin'],
-  variable:"--font-lato"
+  subsets: ["latin"],
+  variable: "--font-lato",
 });
 
 export const metadata: Metadata = {
@@ -39,7 +42,12 @@ export default function RootLayout({
       lang="en"
       className={`font-poppin ${poppins.variable} ${josefin.variable} ${lato.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        <HeadingBar />
+        <Navbar />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }

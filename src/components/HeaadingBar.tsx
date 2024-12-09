@@ -6,6 +6,7 @@ import {
   Heart,
   ShoppingCart,
 } from "lucide-react";
+import Link from "next/link";
 export default function HeadingBar() {
   return (
     <header className="h-[44px] bg-[#7E33E0] shadow-zinc-300 shadow-sm w-full px-4">
@@ -40,8 +41,11 @@ export default function HeadingBar() {
             <h6>Wishlist</h6>
             <Heart className="w-[16px]" />
           </div>
-              
+          
+          <Link href="/cart">
+          
           <ShoppingCart className="md:block hidden md:ml-3 w-[24px]" />
+          </Link>
         </div>
         <ShoppingCart className="md:hidden md:ml-4 w-[24px]" />
 
