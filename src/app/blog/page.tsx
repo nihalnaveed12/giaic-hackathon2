@@ -291,7 +291,7 @@ export default function () {
 
             <div className="grid grid-cols-2 gap-4">
               {products.slice(0,4).map((product) => (
-                <div className="flex flex-col items-center gap-3">
+                <div className="flex flex-col items-center gap-3" key={product.id}>
                   <Image src={product.images[0]} alt={product.name} width={1000} height={1000} className="w-[126px] bg-slate-100"/>
                   <div className="text-center">
                   <h2 className="text-[#151875] text-[12px] font-lato font-semibold">
