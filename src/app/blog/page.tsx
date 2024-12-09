@@ -2,7 +2,7 @@ import { Input } from "@/components/ui/input";
 import Image from "next/image";
 import { products } from "@/data/products";
 
-export default function () {
+export default function Blog() {
   return (
     <div className="">
       <div className=" bg-[#F6F5FF]">
