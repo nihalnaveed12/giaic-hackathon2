@@ -53,7 +53,7 @@ export default function Login() {
                 Sign in
               </Button>
               <p className="text-[#9096B2] font-lato text-[17px]">
-                Don't have an account? Create Account
+                Don&apos;t have an account? Create Account
               </p>
             </div>
           </CardContent>
