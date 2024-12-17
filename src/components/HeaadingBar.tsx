@@ -33,10 +33,10 @@ export default function HeadingBar() {
             <h6>USD</h6>
             <ChevronDown className="w-[16px]" />
           </div>
-          <div className="md:flex cursor-pointer gap-1 hidden">
+          <Link href={`/login`} className="md:flex cursor-pointer gap-1 hidden">
             <h6>Login</h6>
             <User className="w-[16px]" />
-          </div>
+          </Link>
           <div className="md:flex cursor-pointer gap-1 hidden">
             <h6>Wishlist</h6>
             <Heart className="w-[16px]" />

@@ -18,8 +18,9 @@ export default function Blog() {
         </div>
       </div>
 
-      <div className="max-w-screen-xl mx-auto pt-10 flex gap-10 w-[100%]">
-        <div className="flex flex-col gap-10 w-[70%] ">
+      <div className="max-w-screen-xl mx-auto pt-10 flex sm:flex-row flex-col gap-10 w-[100%] px-4">
+
+        <div className="flex flex-col gap-10 sm:w-[70%]  ">
           <div className="flex flex-col gap-4">
             <Image
               src="/blogp1.png"
@@ -121,6 +122,7 @@ export default function Blog() {
         </div>
 
         <div className="flex flex-col gap-10">
+
           <div className="">
             <label
               htmlFor=""
@@ -328,7 +330,9 @@ export default function Blog() {
             <li>Nuvalla</li>
            </ul>
           </div>
+
         </div>
+
       </div>
     </div>
   );

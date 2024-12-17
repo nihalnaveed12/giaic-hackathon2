@@ -3,6 +3,7 @@ import Image from "next/image";
 
 import { Heart, ShoppingCart, ZoomIn } from "lucide-react";
 import { Button } from "./ui/button";
+import Link from "next/link";
 export default function Featured() {
   return (
     <section className="max-w-screen-xl mx-auto pt-[42px] px-4">
@@ -11,7 +12,7 @@ export default function Featured() {
       </h1>
       <div className="grid xl:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-4 py-10 ">
         {products.slice(0, 4).map((product) => (
-          <div className="group relative mb-36 xl:mb-0" key={product.id}>
+          <Link href={`/shop/${product.id}`} className="group relative mb-36 xl:mb-0" key={product.id}>
             <div className="bg-[#F6F7FB] group-relative  cursor-pointer w-full h-full overflow-hidden flex justify-center items-center ">
               <div
                 className={`absolute top-2 left-2 group-hover:flex  gap-1 hidden`}
@@ -53,7 +54,7 @@ export default function Featured() {
                 ${product.price.toFixed(2)}
               </p>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
       <div className="pt-36 flex w-[72px] items-center justify-center gap-1 max-w-screen-lg mx-auto">

@@ -28,15 +28,17 @@ export default function Product() {
       </div>
 
       <div className="max-w-screen-xl mx-auto py-12 px-4">
-        <div className="shadow-xl xl:flex-row flex-col p-2 flex min-h-[460px] gap-6  ">
-          <div className="flex xl:flex-row flex-col  gap-3">
-            <div className="flex xl:flex-col gap-2  w-[151px]  h-[155px] ">
+        <div className="shadow-xl lg:flex-row flex-col p-2 flex min-h-[460px] gap-6">
+
+          <div className="flex lg:flex-row flex-col gap-3 lg:w-[50%] ">
+
+            <div className="flex flex-row lg:flex-col gap-4 w-[30%] ">
               <Image
                 src={product.images[1]}
                 alt={product.name}
                 width={1000}
                 height={1000}
-                className="bg-slate-200"
+                className="bg-slate-200 "
               />
               <Image
                 src={product.images[2]}
@@ -53,13 +55,16 @@ export default function Product() {
                 className="bg-slate-200"
               />
             </div>
-            <Image
-              src={product.images[0]}
-              alt={product.name}
-              width={1000}
-              height={1000}
-              className="xl:w-[375px]  bg-slate-200"
-            />
+
+            
+              <Image
+                src={product.images[0]}
+                alt={product.name}
+                width={1000}
+                height={1000}
+                className=" bg-slate-200 lg:w-[70%]"
+              />
+          
           </div>
 
           <div className="py-4 flex flex-col gap-3">
@@ -192,20 +197,26 @@ export default function Product() {
                   />
                 </div>
                 <div className="flex gap-1">
-                    <span className="text-[#151875]">${product.price}</span>
-                    <span className="text-[#FB2E86]">${product.price - 1000}</span>
+                  <span className="text-[#151875]">${product.price}</span>
+                  <span className="text-[#FB2E86]">
+                    ${product.price - 1000}
+                  </span>
                 </div>
               </div>
             </Link>
           ))}
         </div>
-
-
       </div>
 
       <div className="flex justify-center pt-16">
-        <Image src="/brands.png" alt="brand" width={1000} height={1000} className="w-[80%]"></Image>
-       </div>
+        <Image
+          src="/brands.png"
+          alt="brand"
+          width={1000}
+          height={1000}
+          className="w-[80%]"
+        ></Image>
+      </div>
     </div>
   );
 }

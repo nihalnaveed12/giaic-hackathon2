@@ -9,9 +9,11 @@ export default function Newsletter() {
         <Image
           src="/NesSec.png"
           alt="Agriculture background"
-          layout="fill"
-          className="object-cover object-center"
+          className="object-cover object-center w-full h-full"
           quality={100}
+          width={1000}
+          height={1000}
+
         />
         <div className="absolute inset-0 opacity-30 " />
       </div>
