@@ -11,19 +11,25 @@ import Newsletter from "@/components/NewsLetter";
 import Offer from "@/components/Offer";
 import TopCat from "@/components/TopCategories";
 import Trending from "@/components/Trending";
+import { getAllProducts, getDiscountedItems, getTopCategories } from "@/lib/getAllProducts";
 
-export default function Home() {
+export const revalidate = 10
+
+export default async function Home() {
+  const products = await getAllProducts()
+  const discountedProducts = await getDiscountedItems()
+  const categories = await getTopCategories()
   return (
     <>
       <main>
         <Hero />
-        <Featured />
-        <LatestProduct />
+        <Featured products={products}/>
+        <LatestProduct products={products}/>
         <Offer />
         <HomeSec />
         <Trending />
-        <Discount />
-        <TopCat />
+        <Discount products={discountedProducts}/>
+        <TopCat categories={categories}/>
         <Newsletter />
         <Brands />
         <Latest />

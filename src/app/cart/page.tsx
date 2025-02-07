@@ -1,12 +1,26 @@
-import { products } from "@/data/products";
+"use client";
 import Image from "next/image";
-
+import { CartItem } from "@/redux/types";
+import { removeFromCart, clearCart } from "@/redux/cartSlice";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
-
+import { useDispatch, useSelector } from "react-redux";
+import Link from "next/link";
+import { RootState } from "@/redux/store";
+import { X } from "lucide-react";
 
 export default function CartPage() {
+  const { items, total } = useSelector((state: RootState) => state.cart);
+  const dispatch = useDispatch();
+
+  const handleRemove = (id: string) => {
+    dispatch(removeFromCart(id));
+  };
+
+  const handleClearCart = () => {
+    dispatch(clearCart());
+  };
+
   return (
     <div className="">
       <div className=" bg-[#F6F5FF]">
@@ -33,24 +47,32 @@ export default function CartPage() {
                 <div>Total</div>
               </div>
 
-              {products.slice(0, 5).map((product) => (
+              {items.length === 0 && <div>Your cart is empty</div>}
+
+              {items.map((product: CartItem) => (
                 <div
-                  key={product.id}
+                  key={product._id}
                   className="grid grid-cols-2 md:grid-cols-5 gap-4 items-center border-b border-gray-200 pb-4"
                 >
                   <div className="col-span-2 flex items-center gap-4">
                     <div className="relative h-20 w-20 rounded-lg overflow-hidden bg-gray-100">
                       <Image
-                        src={product.images[0]}
+                        src={product.image.asset.url}
                         alt={product.name}
                         fill
                         className="object-cover"
                       />
+                      <div
+                        className="absolute left-0 bg-red-500 rounded-lg cursor-pointer"
+                        onClick={() => handleRemove(product._id)}
+                      >
+                        <X className="w-4 h-4" color="white" />
+                      </div>
                     </div>
                     <div>
                       <h3 className="font-medium text-sm">{product.name}</h3>
                       <p className="text-sm text-gray-500">
-                        {product.category}
+                        {product.category?.title}
                       </p>
                     </div>
                   </div>
@@ -58,13 +80,9 @@ export default function CartPage() {
                     <span className="md:hidden font-medium text-gray-500">
                       Price:{" "}
                     </span>
-                    ${product.price.toFixed(2)}
+                    ${product.price}
                   </div>
-                  <div>
-                    Quantity:
-                    {"  "}
-                    <span>2</span>
-                  </div>
+                  <div>{product.stockLevel}</div>
                   <div className="text-sm">
                     <span className="md:hidden font-medium text-gray-500">
                       Total:{" "}
@@ -75,13 +93,15 @@ export default function CartPage() {
               ))}
             </div>
 
-            <div className="mt-6 flex justify-between">
-              <Button className="bg-[#FB2E86] text-white hover:bg-pink-500">
-                Update Cart
-              </Button>
-              <Button className="bg-[#FB2E86] text-white hover:bg-pink-500">
-                Clear Cart
-              </Button>
+            <div className="mt-6 ">
+              {items.length > 0 && (
+                <Button
+                  className="bg-[#FB2E86] text-white hover:bg-pink-500"
+                  onClick={handleClearCart}
+                >
+                  Clear Cart
+                </Button>
+              )}
             </div>
           </div>
 
@@ -96,20 +116,18 @@ export default function CartPage() {
                 <div className="space-y-8">
                   <div className="flex justify-between border-b-gray-300 border-b pb-4">
                     <span className="font-medium text-[#101750]">Subtotal</span>
-                    <span className="text-[#101750]">$4000</span>
+                    <span className="text-[#101750]">{0}</span>
                   </div>
                   <div className="flex justify-between border-b-gray-300 border-b pb-4 font-medium">
                     <span>Total</span>
-                    <span>$5000</span>
+                    <span>${total}</span>
                   </div>
                   <div className="flex gap-2 items-center">
-                    {/* <Checkbox className="w-[8px] h-[8px] outline-none border-none bg-[#19D16F] checked:bg-[#19D16F]" /> */}
                     <input
                       type="checkbox"
                       name=""
                       id=""
-                      className="accent-[#19D16F] text-white"
-                      checked
+                      className="accent-[#19D16F]"
                     />
                     <h5 className="text-[#8A91AB] font-lato text-[12px]">
                       Shipping and taxes calculating at checkout time
@@ -117,34 +135,13 @@ export default function CartPage() {
                   </div>
                 </div>
 
-                <Button className="w-full bg-[#19D16F] text-white hover:bg-[#19D46F] mt-8">
-                  Proceed to checkout
-                </Button>
+                <Link href={`/checkout`}>
+                  <Button className="w-full bg-[#19D16F] px-4 py-2 text-white hover:bg-[#19D46F] mt-8">
+                    Proceed to checkout
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
-
-            <div className="">
-              <h1 className="text-lg my-8 font-josifen text-[20px] font-bold text-center text-[#101750]">
-                Calculate Shipping
-              </h1>
-              <div className="space-y-10 mt-4 bg-[#f4f2fc] p-6">
-                <Input
-                  placeholder="Enter your City"
-                  className="border-none pb-4"
-                />
-                <Input
-                  placeholder="Enter your address"
-                  className="border-none pb-4"
-                />
-                <Input
-                  placeholder="Enter your postal code"
-                  className="border-none border-b"
-                />
-                <Button className="w-[179px] bg-[#FB2E86] hover:bg-pink-500 font-josifen text-white">
-                  Calculate Shipping
-                </Button>
-              </div>
-            </div>
           </div>
         </div>
       </div>

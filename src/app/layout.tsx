@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
-
+import { Toaster } from "@/components/ui/toaster";
 import "./globals.css";
 
 import { Poppins, Josefin_Sans, Lato } from "next/font/google";
 import HeadingBar from "@/components/HeaadingBar";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/footer";
+
+import ReduxProvider from "./provider";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -45,8 +47,9 @@ export default function RootLayout({
       <body>
         <HeadingBar />
         <Navbar />
-        {children}
+        <ReduxProvider>{children}</ReduxProvider>
         <Footer />
+        <Toaster />
       </body>
     </html>
   );

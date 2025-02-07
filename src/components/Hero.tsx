@@ -38,7 +38,7 @@ export default function Hero() {
 
         <div className="flex items-center py-10">
           <Image
-            src="/HeroImg/sofa.png"
+            src="/productsImg/chair.png"
             alt="home"
             height={1000}
             width={1000}

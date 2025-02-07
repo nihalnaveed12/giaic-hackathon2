@@ -1,3 +1,5 @@
+"use client";
+import React, {useState , useEffect, Suspense } from "react";
 
 import Link from "next/link";
 import { Input } from "./ui/input";
@@ -11,37 +13,58 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { useRouter, useSearchParams } from "next/navigation";
 
 
-export default function Navbar() {
-
+function NavbarContent() {
+  const [searchValue, setSearchValue] = useState<string>("");
  
   const navItem = [
     {
       name: "Home",
       href: "/",
     },
-    {
-      name: "Pages",
-      href: "/pages",
-    },
-    {
-      name: "Products",
-      href: "/products",
-    },
-    {
-      name: "Blog",
-      href: "/blog",
-    },
+    
     {
       name: "Shop",
       href: "/shop",
     },
     {
+      name: "Categories",
+      href: "/#category",
+    },
+    {
       name: "Contact",
       href: "/contact",
     },
+    {
+      name: "Blog",
+      href: "/blog",
+    },
   ];
+
+  
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  // ✅ Component mount hone par URL se search value load karo
+  useEffect(() => {
+    setSearchValue(searchParams.get("search") || "");
+  }, [searchParams]);
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // ✅ Agar search empty ho to query remove kar do
+    if (!searchValue.trim()) {
+      router.push("/all-products");
+      return;
+    }
+
+    // ✅ Search query ko URL me update karo
+    router.push(`/shop?search=${encodeURIComponent(searchValue)}`);
+  };
+
   return (
     <div className="pt-2 px-4">
       <nav className="max-w-screen-lg mx-auto ">
@@ -62,8 +85,10 @@ export default function Navbar() {
             </ul>
           </div>
 
-          <div className="md:flex items-center hidden">
+          <form className="md:flex items-center hidden" onSubmit={handleSearch}>
             <Input
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)}
               type="text"
               placeholder="Search for products"
               className="border-none"
@@ -71,7 +96,7 @@ export default function Navbar() {
             <Button className="bg-[#FB2E86] hover:bg-[#f563a2]">
               <Search className="w-[24px] text-[#E7E6EF]" />
             </Button>
-          </div>
+          </form>
 
           <Sheet >
             <SheetTrigger className="md:hidden">
@@ -122,3 +147,13 @@ export default function Navbar() {
     </div>
   );
 }
+
+function Navbar() {
+  return (
+    <Suspense fallback={<div>Loading filters...</div>}>
+      <NavbarContent />
+    </Suspense>
+  );
+};
+
+export default Navbar;

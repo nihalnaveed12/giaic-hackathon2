@@ -1,5 +1,4 @@
-import { Product } from "@/types";
-export const products: Product[] = [
+export const products = [
   {
     id: 1,
     name: "Wireless Bluetooth Headphones",
