@@ -3,12 +3,11 @@ import { getAllProducts } from "@/lib/getAllProducts";
 
 import Products from "@/components/ProductPage";
 
-export const revalidate = 10
+export const revalidate = 30;
 
 export default async function Shop() {
   // Fetch products on the server
   const products: Product[] = await getAllProducts();
-  
 
   return (
     <div>
