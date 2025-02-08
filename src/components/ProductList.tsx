@@ -1,7 +1,7 @@
 import { Product } from "@/types/ProductTypes";
 import Image from "next/image";
 import Link from "next/link";
-import { Heart, LayoutGrid, List, ShoppingCart, ZoomIn } from "lucide-react";
+import { Heart, ShoppingCart, ZoomIn } from "lucide-react";
 import { calculateDiscountedPrice } from "@/utils/calculateDiscountedPrice";
 export default function ProductList({products} : {products : Product[]}) {
 return (

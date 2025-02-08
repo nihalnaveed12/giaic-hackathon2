@@ -1,6 +1,5 @@
 "use client";
 
-import { client } from "@/sanity/lib/client";
 import Image from "next/image";
 
 import { getAllProducts } from "@/lib/getAllProducts";
@@ -18,6 +17,9 @@ import { PortableText } from "@portabletext/react";
 import { components } from "@/components/sanityRender";
 import ReviewForm from "@/components/reviewForm";
 import StarRating from "@/components/ui/Rating";
+import { client } from "@/sanity/lib/client";
+
+
 
 export interface ProductInterface {
   _id: string;

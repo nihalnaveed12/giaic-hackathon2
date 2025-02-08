@@ -22,6 +22,7 @@ function ProductContent({ products }: ShopClientProps) {
 
   const searchParams = useSearchParams();
   const category = searchParams.get("category");
+
   // Apply filters when `category` or `search` query parameters change
   useEffect(() => {
     setLoading(true);
@@ -75,11 +76,8 @@ function ProductContent({ products }: ShopClientProps) {
 
     setFilteredProducts(filtered);
     setLoading(false);
-  }, [searchParams, products]); // ✅ Now it listens to all filters
+  }, [searchParams, products]);
 
-  // Handle filter changes from the `ShopFilters` component
-
-  // Handle filter changes from the `ShopFilters` component
   const handleFilterChange = (filtered: Product[]) => {
     setFilteredProducts(filtered);
   };
@@ -200,7 +198,7 @@ function ProductContent({ products }: ShopClientProps) {
 
 function Products({ products }: ShopClientProps) {
   return (
-    <Suspense fallback={<div>Loading filters...</div>}>
+    <Suspense fallback={<div>Loading products...</div>}>
       <ProductContent products={products} />
     </Suspense>
   );

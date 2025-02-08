@@ -1,5 +1,5 @@
 import { Category } from "@/components/TopCategories";
-import {client } from "@/sanity/lib/client"
+import { client } from "@/sanity/lib/client";
 export const getAllProducts = async () => {
   const query = `*[_type == "product"]{
     _id,
@@ -42,7 +42,7 @@ export const getDiscountedItems = async () => {
   const discountedProducts = await client.fetch(query);
   return discountedProducts;
 };
-export const getTopCategories = async (): Promise<Category[]>  => {
+export const getTopCategories = async (): Promise<Category[]> => {
   const query = `*[_type == "category"]{
   _id,
   title,
@@ -53,6 +53,3 @@ export const getTopCategories = async (): Promise<Category[]>  => {
   const TopCategories: Category[] = await client.fetch(query);
   return TopCategories;
 };
-
-
-
