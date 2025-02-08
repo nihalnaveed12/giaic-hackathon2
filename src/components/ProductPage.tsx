@@ -198,7 +198,7 @@ function ProductContent({ products }: ShopClientProps) {
   );
 }
 
-function Product({ products }: ShopClientProps) {
+function Products({ products }: ShopClientProps) {
   return (
     <Suspense fallback={<div>Loading filters...</div>}>
       <ProductContent products={products} />
@@ -206,4 +206,4 @@ function Product({ products }: ShopClientProps) {
   );
 };
 
-export default Product;
+export default Products;
